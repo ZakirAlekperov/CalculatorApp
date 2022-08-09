@@ -220,6 +220,7 @@
             android:layout_marginTop="8dp"
             android:text="1"
             android:textSize="40sp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonTwo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonFour" />
 
@@ -231,6 +232,7 @@
             android:layout_marginTop="8dp"
             android:text="2"
             android:textSize="40sp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonThree"
             app:layout_constraintStart_toEndOf="@+id/buttonOne"
             app:layout_constraintTop_toBottomOf="@+id/buttonFive" />
 
@@ -242,17 +244,19 @@
             android:layout_marginTop="8dp"
             android:text="3"
             android:textSize="40sp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonPlus"
             app:layout_constraintStart_toEndOf="@+id/buttonTwo"
             app:layout_constraintTop_toBottomOf="@+id/buttonSix" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/buttonPlus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Button"
+            android:text="+"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonThree"
             app:layout_constraintTop_toBottomOf="@+id/buttonMinus" />
