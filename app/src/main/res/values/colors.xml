@@ -10,4 +10,5 @@
     <color name="commandButtonColor">#a5a5a5</color>
     <color name="actionButtonColor">#ff9f0a</color>
     <color name="numberButton">#333333</color>
+    <color name="landscapeAdditionalButton">#212121</color>
 </resources>
