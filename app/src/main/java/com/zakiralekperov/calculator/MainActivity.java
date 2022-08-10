@@ -8,8 +8,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButtonToggleGroup;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button buttonClear;
@@ -82,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView resultTextView;
     TextView radianStatus;
+
+    MainActivityEngine engine;
 
     String text;
 
@@ -230,11 +230,88 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonTanHyperbolik.setOnClickListener(this);
 
         buttonRandom.setOnClickListener(this);
-    }
 
+        engine = new MainActivityEngine();
+    }
 
     @Override
     public void onClick(View view) {
-        resultTextView.setText("7");
+
+        if(view == buttonClear){
+
+        }
+        buttonSign.setOnClickListener(this);
+        buttonPercent.setOnClickListener(this);
+
+        if (view == buttonOne){
+            resultTextView.setText("1");
+            return;
+        }
+        if (view == buttonTwo){
+            resultTextView.setText("2");
+            return;
+        }
+        buttonThree.setOnClickListener(this);
+        buttonFour.setOnClickListener(this);
+        buttonFive.setOnClickListener(this);
+        buttonSix.setOnClickListener(this);
+        buttonSeven.setOnClickListener(this);
+        buttonEight.setOnClickListener(this);
+        buttonNine.setOnClickListener(this);
+        buttonZero.setOnClickListener(this);
+
+        buttonDivision.setOnClickListener(this);
+        buttonMultiplication.setOnClickListener(this);
+        buttonMinus.setOnClickListener(this);
+        buttonPlus.setOnClickListener(this);
+
+        buttonDecimalPlace.setOnClickListener(this);
+
+        buttonEquals.setOnClickListener(this);
+
+        buttonOpeningParenthesis.setOnClickListener(this);
+        buttonClosedParenthesis.setOnClickListener(this);
+
+        buttonMemoryClear.setOnClickListener(this);
+        buttonMemoryPlus.setOnClickListener(this);
+        buttonMemoryMinus.setOnClickListener(this);
+        buttonMemoryRead.setOnClickListener(this);
+
+        buttonBinary.setOnClickListener(this);
+
+        buttonSquare.setOnClickListener(this);
+        buttonCubic.setOnClickListener(this);
+        buttonPower.setOnClickListener(this);
+        buttonExponent.setOnClickListener(this);
+        buttonPowerTen.setOnClickListener(this);
+
+        buttonInverseValue.setOnClickListener(this);
+
+        buttonSqrt.setOnClickListener(this);
+        buttonCubeRoot.setOnClickListener(this);
+        buttonRoot.setOnClickListener(this);
+
+        buttonLn.setOnClickListener(this);
+        buttonLg.setOnClickListener(this);
+
+        buttonFactorial.setOnClickListener(this);
+
+        buttonSin.setOnClickListener(this);
+        buttonCos.setOnClickListener(this);
+        buttonTan.setOnClickListener(this);
+
+        buttonE.setOnClickListener(this);
+        buttonPI.setOnClickListener(this);
+
+        buttonEE.setOnClickListener(this);
+
+        buttonRadian.setOnClickListener(this);
+
+        buttonSinHyperbolic.setOnClickListener(this);
+        buttonCosHyperbolic.setOnClickListener(this);
+        buttonTanHyperbolik.setOnClickListener(this);
+
+        buttonRandom.setOnClickListener(this);
+
     }
 }
