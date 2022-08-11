@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".MainActivity">
+    tools:context=".MainActivityLand">
 
     <LinearLayout
         android:id="@+id/resultLayout"
@@ -37,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/black"
-            android:text="sdfjdsklfjdkslfjkl"
             android:textAlignment="viewEnd"
             android:textColor="@color/white"
             android:textSize="60sp" />
@@ -64,6 +63,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/commandButtonColor"
             android:text="C"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonSeven"
             app:layout_constraintEnd_toStartOf="@+id/buttonSign"
@@ -77,6 +77,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/commandButtonColor"
             android:text="+-"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonEight"
             app:layout_constraintEnd_toStartOf="@+id/buttonPercent"
@@ -90,6 +91,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/commandButtonColor"
             android:text="%"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonNine"
             app:layout_constraintEnd_toStartOf="@+id/buttonDivision"
@@ -104,6 +106,7 @@
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/actionButtonColor"
             android:text="/"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonMultiplication"
             app:layout_constraintEnd_toEndOf="parent"
@@ -118,6 +121,7 @@
             android:backgroundTint="@color/numberButton"
             android:text="7"
             android:textSize="20sp"
+            android:onClick="onClick"
             app:layout_constraintBottom_toTopOf="@+id/buttonFour"
             app:layout_constraintEnd_toStartOf="@+id/buttonEight"
             app:layout_constraintStart_toStartOf="parent"
@@ -131,6 +135,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="8"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonFive"
             app:layout_constraintEnd_toStartOf="@+id/buttonNine"
@@ -145,6 +150,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="9"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonSix"
             app:layout_constraintEnd_toStartOf="@+id/buttonMultiplication"
@@ -160,6 +166,7 @@
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/actionButtonColor"
             android:text="*"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonMinus"
             app:layout_constraintEnd_toEndOf="parent"
@@ -173,6 +180,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="4"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/buttonFive"
             app:layout_constraintStart_toStartOf="parent"
@@ -186,6 +194,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="5"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/buttonSix"
             app:layout_constraintStart_toEndOf="@+id/buttonFour"
@@ -199,6 +208,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="6"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/buttonMinus"
             app:layout_constraintStart_toEndOf="@+id/buttonFive"
@@ -213,6 +223,7 @@
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/actionButtonColor"
             android:text="-"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonSix"
@@ -225,6 +236,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="1"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonZero"
             app:layout_constraintEnd_toStartOf="@+id/buttonTwo"
@@ -240,6 +252,7 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="2"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonZero"
             app:layout_constraintEnd_toStartOf="@+id/buttonThree"
@@ -254,6 +267,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="3"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/buttonPlus"
             app:layout_constraintStart_toEndOf="@+id/buttonTwo"
@@ -268,6 +282,7 @@
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/actionButtonColor"
             android:text="+"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonThree"
@@ -280,6 +295,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="0"
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonDecimalPlace"
@@ -295,6 +311,7 @@
             android:layout_marginBottom="1dp"
             android:backgroundTint="@color/numberButton"
             android:text="."
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buttonEquals"
@@ -310,6 +327,7 @@
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/actionButtonColor"
             android:text="="
+            android:onClick="onClick"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -336,6 +354,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="("
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonBinarySystem"
             app:layout_constraintEnd_toStartOf="@+id/buttonClosingParenthesis"
@@ -351,6 +370,7 @@
             android:layout_marginBottom="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text=")"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonSquare"
             app:layout_constraintEnd_toStartOf="@+id/buttonMemoryClear"
@@ -364,6 +384,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="mc"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonClosingParenthesis"
             app:layout_constraintTop_toTopOf="parent" />
@@ -375,6 +396,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/numberButton"
             android:text="m+"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonMemoryClear"
             app:layout_constraintTop_toTopOf="parent" />
@@ -386,6 +408,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="m-"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonMemoryPlus"
             app:layout_constraintTop_toTopOf="parent" />
@@ -397,6 +420,7 @@
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="mr"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonMemoryMinus"
@@ -409,6 +433,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="2nd"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonOpeningParenthesis" />
@@ -421,6 +446,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="X^2"
+            android:onClick="onClick"
             app:layout_constraintStart_toEndOf="@+id/buttonBinarySystem"
             app:layout_constraintTop_toBottomOf="@+id/buttonClosingParenthesis" />
 
@@ -432,6 +458,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="x^3"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonSquare"
             app:layout_constraintTop_toBottomOf="@+id/buttonMemoryClear" />
@@ -444,6 +471,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="x^y"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonCubic"
             app:layout_constraintTop_toBottomOf="@+id/buttonMemoryPlus" />
@@ -456,6 +484,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="e^x"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonPower"
             app:layout_constraintTop_toBottomOf="@+id/buttonMemoryMinus" />
@@ -468,6 +497,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="10^x"
+            android:onClick="onClick"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/buttonExponent"
             app:layout_constraintTop_toBottomOf="@+id/buttonMemoryRead" />
@@ -479,6 +509,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="1/x"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonBinarySystem" />
@@ -491,6 +522,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="sqrt"
+            android:onClick="onClick"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonInverseValue"
             app:layout_constraintTop_toBottomOf="@+id/buttonSquare" />
@@ -503,6 +535,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="Sqt3"
+            android:onClick="onClick"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonSqrt"
             app:layout_constraintTop_toBottomOf="@+id/buttonCubic" />
@@ -515,6 +548,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="root"
+            android:onClick="onClick"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonCubeRoot"
             app:layout_constraintTop_toBottomOf="@+id/buttonPower" />
@@ -527,6 +561,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="Ln"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonRoot"
             app:layout_constraintTop_toBottomOf="@+id/buttonExponent" />
@@ -539,6 +574,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="Lg"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonLn"
             app:layout_constraintTop_toBottomOf="@+id/buttonPowerTen" />
@@ -550,6 +586,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="x!"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonInverseValue" />
@@ -562,6 +599,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="sin"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonFactorial"
             app:layout_constraintTop_toBottomOf="@+id/buttonSqrt" />
@@ -574,6 +612,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="cos"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonSinus"
             app:layout_constraintTop_toBottomOf="@+id/buttonCubeRoot" />
@@ -586,6 +625,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="tan"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonCosinus"
             app:layout_constraintTop_toBottomOf="@+id/buttonRoot" />
@@ -598,6 +638,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="e"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonTangent"
             app:layout_constraintTop_toBottomOf="@+id/buttonLn" />
@@ -610,6 +651,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="ee"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/buttonE"
             app:layout_constraintTop_toBottomOf="@+id/buttonLg" />
@@ -621,18 +663,20 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="rad"
+            android:onClick="onClick"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonFactorial" />
 
         <Button
-            android:id="@+id/buttonSinHiperbolic"
+            android:id="@+id/buttonSinHyperbolic"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="sinh"
+            android:onClick="onClick"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonRadian"
             app:layout_constraintTop_toBottomOf="@+id/buttonSinus" />
@@ -645,8 +689,9 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="cosh"
+            android:onClick="onClick"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/buttonSinHiperbolic"
+            app:layout_constraintStart_toEndOf="@+id/buttonSinHyperbolic"
             app:layout_constraintTop_toBottomOf="@+id/buttonCosinus" />
 
         <Button
@@ -657,6 +702,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="tanh"
+            android:onClick="onClick"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonCosHiperbolic"
             app:layout_constraintTop_toBottomOf="@+id/buttonTangent" />
@@ -669,6 +715,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="pi"
+            android:onClick="onClick"
             app:layout_constraintStart_toEndOf="@+id/buttonTanHiperbolic"
             app:layout_constraintTop_toBottomOf="@+id/buttonE" />
 
@@ -680,6 +727,7 @@
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/landscapeAdditionalButton"
             android:text="rand"
+            android:onClick="onClick"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/buttonPi"
             app:layout_constraintTop_toBottomOf="@+id/buttonEE" />

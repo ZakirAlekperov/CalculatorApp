@@ -1,12 +1,15 @@
 package com.zakiralekperov.calculator;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,56 +37,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button buttonEquals;
 
-    Button buttonOpeningParenthesis;
-    Button buttonClosedParenthesis;
-
-    Button buttonMemoryClear;
-    Button buttonMemoryPlus;
-    Button buttonMemoryMinus;
-    Button buttonMemoryRead;
-
-    Button buttonBinary;
-
-    Button buttonSquare;
-    Button buttonCubic;
-    Button buttonPower;
-    Button buttonExponent;
-    Button buttonPowerTen;
-
-    Button buttonInverseValue;
-
-    Button buttonSqrt;
-    Button buttonCubeRoot;
-    Button buttonRoot;
-
-    Button buttonLn;
-    Button buttonLg;
-
-    Button buttonFactorial;
-
-    Button buttonSin;
-    Button buttonCos;
-    Button buttonTan;
-
-    Button buttonE;
-    Button buttonPI;
-
-    Button buttonEE;
-
-    Button buttonRadian;
-
-    Button buttonSinHyperbolic;
-    Button buttonCosHyperbolic;
-    Button buttonTanHyperbolik;
-
-    Button buttonRandom;
-
     TextView resultTextView;
     TextView radianStatus;
 
-    MainActivityEngine engine;
+    MainActivityEngine engine = new MainActivityEngine();;
 
-    String text;
+    String result;
+   private static final String SAVED_RESULT = "Main_Activity.SAVED_RESULT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 //        Window w = getWindow();
 //        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION); //Скрыываем нижнюю панель
+
+        MainActivityLand mainActivityLand = new MainActivityLand();
 
         resultTextView = (TextView) findViewById(R.id.resultFieldTextView);
         radianStatus = (TextView) findViewById(R.id.radianStatus);
@@ -119,199 +81,99 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonEquals = (Button) findViewById(R.id.buttonEquals);
 
-        buttonOpeningParenthesis = (Button) findViewById(R.id.buttonOpeningParenthesis);
-        buttonClosedParenthesis = (Button) findViewById(R.id.buttonClosingParenthesis);
-
-        buttonMemoryClear = (Button) findViewById(R.id.buttonMemoryClear);
-        buttonMemoryPlus = (Button) findViewById(R.id.buttonMemoryPlus);
-        buttonMemoryMinus = (Button) findViewById(R.id.buttonMemoryMinus);
-        buttonMemoryRead = (Button) findViewById(R.id.buttonMemoryRead);
-
-        buttonBinary = (Button) findViewById(R.id.buttonBinarySystem);
-
-        buttonSquare = (Button) findViewById(R.id.buttonSquare);
-        buttonCubic = (Button) findViewById(R.id.buttonCubic);
-        buttonPower = (Button) findViewById(R.id.buttonPower);
-        buttonExponent = (Button) findViewById(R.id.buttonExponent);
-        buttonPowerTen = (Button) findViewById(R.id.buttonPowerTen);
-
-        buttonInverseValue = (Button) findViewById(R.id.buttonInverseValue);
-
-        buttonSqrt = (Button) findViewById(R.id.buttonSqrt);
-        buttonCubeRoot = (Button) findViewById(R.id.buttonCubeRoot);
-        buttonRoot = (Button) findViewById(R.id.buttonRoot);
-
-        buttonLn = (Button) findViewById(R.id.buttonLn);
-        buttonLg = (Button) findViewById(R.id.buttonLg);
-
-        buttonFactorial = (Button) findViewById(R.id.buttonFactorial);
-
-        buttonSin = (Button) findViewById(R.id.buttonSinus);
-        buttonCos = (Button) findViewById(R.id.buttonCosinus);
-        buttonTan = (Button) findViewById(R.id.buttonTangent);
-
-        buttonE = (Button) findViewById(R.id.buttonE);
-        buttonPI = (Button) findViewById(R.id.buttonPi);
-
-        buttonEE = (Button) findViewById(R.id.buttonEE);
-
-        buttonRadian = (Button) findViewById(R.id.buttonRadian);
-
-        buttonSinHyperbolic = (Button) findViewById(R.id.buttonSinHiperbolic);
-        buttonCosHyperbolic = (Button) findViewById(R.id.buttonCosHiperbolic);
-        buttonTanHyperbolik = (Button) findViewById(R.id.buttonTanHiperbolic);
-
-        buttonRandom  =(Button) findViewById(R.id.buttonRandom);
-
-        buttonClear.setOnClickListener(this);
-        buttonSign.setOnClickListener(this);
-        buttonPercent.setOnClickListener(this);
-
-        buttonOne.setOnClickListener(this);
-        buttonTwo.setOnClickListener(this);
-        buttonThree.setOnClickListener(this);
-        buttonFour.setOnClickListener(this);
-        buttonFive.setOnClickListener(this);
-        buttonSix.setOnClickListener(this);
-        buttonSeven.setOnClickListener(this);
-        buttonEight.setOnClickListener(this);
-        buttonNine.setOnClickListener(this);
-        buttonZero.setOnClickListener(this);
-
-        buttonDivision.setOnClickListener(this);
-        buttonMultiplication.setOnClickListener(this);
-        buttonMinus.setOnClickListener(this);
-        buttonPlus.setOnClickListener(this);
-
-        buttonDecimalPlace.setOnClickListener(this);
-
-        buttonEquals.setOnClickListener(this);
-
-        buttonOpeningParenthesis.setOnClickListener(this);
-        buttonClosedParenthesis.setOnClickListener(this);
-
-        buttonMemoryClear.setOnClickListener(this);
-        buttonMemoryPlus.setOnClickListener(this);
-        buttonMemoryMinus.setOnClickListener(this);
-        buttonMemoryRead.setOnClickListener(this);
-
-        buttonBinary.setOnClickListener(this);
-
-        buttonSquare.setOnClickListener(this);
-        buttonCubic.setOnClickListener(this);
-        buttonPower.setOnClickListener(this);
-        buttonExponent.setOnClickListener(this);
-        buttonPowerTen.setOnClickListener(this);
-
-        buttonInverseValue.setOnClickListener(this);
-
-        buttonSqrt.setOnClickListener(this);
-        buttonCubeRoot.setOnClickListener(this);
-        buttonRoot.setOnClickListener(this);
-
-        buttonLn.setOnClickListener(this);
-        buttonLg.setOnClickListener(this);
-
-        buttonFactorial.setOnClickListener(this);
-
-        buttonSin.setOnClickListener(this);
-        buttonCos.setOnClickListener(this);
-        buttonTan.setOnClickListener(this);
-
-        buttonE.setOnClickListener(this);
-        buttonPI.setOnClickListener(this);
-
-        buttonEE.setOnClickListener(this);
-
-        buttonRadian.setOnClickListener(this);
-
-        buttonSinHyperbolic.setOnClickListener(this);
-        buttonCosHyperbolic.setOnClickListener(this);
-        buttonTanHyperbolik.setOnClickListener(this);
-
-        buttonRandom.setOnClickListener(this);
-
-        engine = new MainActivityEngine();
+        resultTextView.setText(MainActivityEngine.result);
     }
 
     @Override
     public void onClick(View view) {
 
         if(view == buttonClear){
-
-        }
-        buttonSign.setOnClickListener(this);
-        buttonPercent.setOnClickListener(this);
-
-        if (view == buttonOne){
-            resultTextView.setText("1");
+            engine.onClickButtonClear();
             return;
         }
-        if (view == buttonTwo){
-            resultTextView.setText("2");
+        if(view == buttonSign){
+            engine.onClickButtonSign();
             return;
         }
-        buttonThree.setOnClickListener(this);
-        buttonFour.setOnClickListener(this);
-        buttonFive.setOnClickListener(this);
-        buttonSix.setOnClickListener(this);
-        buttonSeven.setOnClickListener(this);
-        buttonEight.setOnClickListener(this);
-        buttonNine.setOnClickListener(this);
-        buttonZero.setOnClickListener(this);
+        if(view == buttonPercent){
+            engine.onClickButtonPercent();
+            return;
+        }
+        if(view == buttonOne){
+            updateResultField(buttonOne.getText().toString());
+            return;
+        }
+        if(view == buttonTwo){
+            updateResultField(buttonTwo.getText().toString());
+            return;
+        }
+        if(view == buttonThree){
+            updateResultField(buttonThree.getText().toString());
+            return;
+        }
+        if(view == buttonFour){
+            updateResultField(buttonFour.getText().toString());
+            return;
+        }
+        if(view == buttonFive){
+            updateResultField(buttonFive.getText().toString());
+            return;
+        }
+        if(view == buttonSix){
+            updateResultField(buttonSix.getText().toString());
+            return;
+        }
+        if(view == buttonSeven){
+            updateResultField(buttonSeven.getText().toString());
+            return;
+        }
+        if(view == buttonEight){
+            updateResultField(buttonEight.getText().toString());
+            return;
+        }
+        if(view == buttonNine){
+            updateResultField(buttonNine.getText().toString());
+            return;
+        }
+        if(view == buttonZero){
+            updateResultField(buttonZero.getText().toString());
+            return;
+        }
+        if(view == buttonDivision){
+            engine.onClickButtonDivision();
+            return;
+        }
+        if(view == buttonMultiplication){
+            engine.onClickButtonMultiplication();
+            return;
+        }
+        if(view == buttonMinus){
+            engine.onCLickButtonMinus();
+            return;
+        }
+        if(view == buttonPlus){
+            engine.onClickButtonPlus();
+            return;
+        }
+        if(view == buttonDecimalPlace){
+            updateResultField(buttonDecimalPlace.getText().toString());
+            return;
+        }
+        if(view == buttonEquals){
+            engine.onClickButtonEquals();
+            return;
+        }
+        engine.onClickButtonRandom();
+    }
 
-        buttonDivision.setOnClickListener(this);
-        buttonMultiplication.setOnClickListener(this);
-        buttonMinus.setOnClickListener(this);
-        buttonPlus.setOnClickListener(this);
+    private void updateResultField(String value){
+        result = resultTextView.getText().toString() + value;
+        resultTextView.setText(result);
+    }
 
-        buttonDecimalPlace.setOnClickListener(this);
-
-        buttonEquals.setOnClickListener(this);
-
-        buttonOpeningParenthesis.setOnClickListener(this);
-        buttonClosedParenthesis.setOnClickListener(this);
-
-        buttonMemoryClear.setOnClickListener(this);
-        buttonMemoryPlus.setOnClickListener(this);
-        buttonMemoryMinus.setOnClickListener(this);
-        buttonMemoryRead.setOnClickListener(this);
-
-        buttonBinary.setOnClickListener(this);
-
-        buttonSquare.setOnClickListener(this);
-        buttonCubic.setOnClickListener(this);
-        buttonPower.setOnClickListener(this);
-        buttonExponent.setOnClickListener(this);
-        buttonPowerTen.setOnClickListener(this);
-
-        buttonInverseValue.setOnClickListener(this);
-
-        buttonSqrt.setOnClickListener(this);
-        buttonCubeRoot.setOnClickListener(this);
-        buttonRoot.setOnClickListener(this);
-
-        buttonLn.setOnClickListener(this);
-        buttonLg.setOnClickListener(this);
-
-        buttonFactorial.setOnClickListener(this);
-
-        buttonSin.setOnClickListener(this);
-        buttonCos.setOnClickListener(this);
-        buttonTan.setOnClickListener(this);
-
-        buttonE.setOnClickListener(this);
-        buttonPI.setOnClickListener(this);
-
-        buttonEE.setOnClickListener(this);
-
-        buttonRadian.setOnClickListener(this);
-
-        buttonSinHyperbolic.setOnClickListener(this);
-        buttonCosHyperbolic.setOnClickListener(this);
-        buttonTanHyperbolik.setOnClickListener(this);
-
-        buttonRandom.setOnClickListener(this);
-
+    @Override
+    protected void onDestroy() {
+        MainActivityEngine.result = resultTextView.getText().toString();
+        super.onDestroy();
     }
 }
