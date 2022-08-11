@@ -82,21 +82,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonEquals = (Button) findViewById(R.id.buttonEquals);
 
         resultTextView.setText(MainActivityEngine.result);
+       // if(savedInstanceState != null){
+         //       result = savedInstanceState.getString(SAVED_RESULT);
+        //}
     }
 
     @Override
     public void onClick(View view) {
 
         if(view == buttonClear){
-            engine.onClickButtonClear();
+            onClickButtonClear();
             return;
         }
         if(view == buttonSign){
-            engine.onClickButtonSign();
+            onClickButtonSign();
             return;
         }
         if(view == buttonPercent){
-            engine.onClickButtonPercent();
+            result= engine.onClickButtonPercent(resultTextView.getText().toString());
+            resultTextView.setText(result);
             return;
         }
         if(view == buttonOne){
@@ -176,4 +180,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MainActivityEngine.result = resultTextView.getText().toString();
         super.onDestroy();
     }
+
+    //Очищает поле результата
+    private void onClickButtonClear(){
+        result ="";
+        resultTextView.setText(result);
+    }
+    //Меняет знак числа
+    private void onClickButtonSign() {
+        result = resultTextView.getText().toString();
+
+        if(!result.startsWith("-")){
+            result = "-"+result;
+            resultTextView.setText(result);
+            return;
+        }
+        result = result.replace("-", "");
+        resultTextView.setText(result);
+        return;
+    }
+
 }

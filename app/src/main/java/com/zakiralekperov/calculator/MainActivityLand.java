@@ -88,7 +88,6 @@ public class MainActivityLand extends AppCompatActivity implements View.OnClickL
     MainActivityEngine engine;
 
     String result;
-    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,15 +178,16 @@ public class MainActivityLand extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
 
         if(view == buttonClear){
-           engine.onClickButtonClear();
+           onClickButtonClear();
            return;
         }
         if(view == buttonSign){
-            engine.onClickButtonSign();
+            onClickButtonSign();
             return;
         }
         if(view == buttonPercent){
-            engine.onClickButtonPercent();
+            result= engine.onClickButtonPercent(resultTextView.getText().toString());
+            resultTextView.setText(result);
             return;
         }
         if(view == buttonOne){
@@ -369,14 +369,33 @@ public class MainActivityLand extends AppCompatActivity implements View.OnClickL
         }
         engine.onClickButtonRandom();
     }
-
     private void updateResultField(String value){
-        text = resultTextView.getText().toString() + value;
-        resultTextView.setText(text);
+        result = resultTextView.getText().toString() + value;
+        resultTextView.setText(result);
     }
 
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putString(SAVED_RESULT, result);
-        super.onSaveInstanceState(outState);
+    @Override
+    protected void onDestroy() {
+        MainActivityEngine.result = resultTextView.getText().toString();
+        super.onDestroy();
+    }
+
+    //Очищает поле результата
+    private void onClickButtonClear(){
+        result ="";
+        resultTextView.setText(result);
+    }
+    //Меняет знак числа
+    private void onClickButtonSign() {
+        result = resultTextView.getText().toString();
+
+        if(!result.startsWith("-")){
+            result = "-"+result;
+            resultTextView.setText(result);
+            return;
+        }
+        result = result.replace("-", "");
+        resultTextView.setText(result);
+        return;
     }
 }

@@ -3,18 +3,11 @@ package com.zakiralekperov.calculator;
 public class MainActivityEngine {
 
     static String result;
-
-    //Очищает поле результата
-    public void onClickButtonClear(){
-
-    }
-    //Меняет знак числа
-    public void onClickButtonSign(){
-
-    }
     //Вычислить процент от числа
-    public void onClickButtonPercent(){
-
+    public String onClickButtonPercent(String value){
+        double value_double =  convert(value);
+        value_double = value_double / 100;
+        return  String.valueOf(value_double);
     }
     //Деление
     public void onClickButtonDivision(){
@@ -91,6 +84,9 @@ public class MainActivityEngine {
     //
     public void onClickButtonRandom(){}
 
+    private double convert(String str){
+        return Double.parseDouble(str);
+    }
 
 
 
