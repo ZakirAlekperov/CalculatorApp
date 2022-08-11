@@ -1,15 +1,12 @@
 package com.zakiralekperov.calculator;
 
-import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,9 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView resultTextView;
     TextView radianStatus;
 
-    MainActivityEngine engine = new MainActivityEngine();;
+    Engine engine = new Engine();;
 
     String result;
+    String currentValue;
+    Double resultD;
    private static final String SAVED_RESULT = "Main_Activity.SAVED_RESULT";
 
     @Override
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonEquals = (Button) findViewById(R.id.buttonEquals);
 
-        resultTextView.setText(MainActivityEngine.result);
+        resultTextView.setText(Engine.resultStr);
        // if(savedInstanceState != null){
          //       result = savedInstanceState.getString(SAVED_RESULT);
         //}
@@ -89,62 +88,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
-        if(view == buttonClear){
-            onClickButtonClear();
-            return;
-        }
-        if(view == buttonSign){
-            onClickButtonSign();
-            return;
-        }
-        if(view == buttonPercent){
-            result= engine.onClickButtonPercent(resultTextView.getText().toString());
-            resultTextView.setText(result);
-            return;
-        }
-        if(view == buttonOne){
-            updateResultField(buttonOne.getText().toString());
-            return;
-        }
-        if(view == buttonTwo){
-            updateResultField(buttonTwo.getText().toString());
-            return;
-        }
-        if(view == buttonThree){
-            updateResultField(buttonThree.getText().toString());
-            return;
-        }
-        if(view == buttonFour){
-            updateResultField(buttonFour.getText().toString());
-            return;
-        }
-        if(view == buttonFive){
-            updateResultField(buttonFive.getText().toString());
-            return;
-        }
-        if(view == buttonSix){
-            updateResultField(buttonSix.getText().toString());
-            return;
-        }
-        if(view == buttonSeven){
-            updateResultField(buttonSeven.getText().toString());
-            return;
-        }
-        if(view == buttonEight){
-            updateResultField(buttonEight.getText().toString());
-            return;
-        }
-        if(view == buttonNine){
-            updateResultField(buttonNine.getText().toString());
-            return;
-        }
-        if(view == buttonZero){
-            updateResultField(buttonZero.getText().toString());
-            return;
-        }
         if(view == buttonDivision){
-            engine.onClickButtonDivision();
+            onClickButtonDivision();
+            resultTextView.setText(result);
             return;
         }
         if(view == buttonMultiplication){
@@ -160,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         if(view == buttonDecimalPlace){
-            updateResultField(buttonDecimalPlace.getText().toString());
             return;
         }
         if(view == buttonEquals){
@@ -170,34 +115,92 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         engine.onClickButtonRandom();
     }
 
-    private void updateResultField(String value){
-        result = resultTextView.getText().toString() + value;
-        resultTextView.setText(result);
-    }
+
 
     @Override
     protected void onDestroy() {
-        MainActivityEngine.result = resultTextView.getText().toString();
+        Engine.resultStr = resultTextView.getText().toString();
         super.onDestroy();
     }
 
+
+
+    //Деление
+    private void onClickButtonDivision(){
+        result = resultTextView.getText().toString();
+        buttonDivision.setBackgroundColor(Color.WHITE);
+        buttonDivision.setTextColor(getResources().getColor(R.color.actionButtonColor));
+    }
+
+
+
+    private void onClickButtonEquals(){
+        currentValue = resultTextView.getText().toString();
+
+    }
+    //Конвертирует значение на экране в число, возращает 0, если экран пуст
+    private double getValue(){
+        String str = resultTextView.getText().toString();
+        if (str.equals("")){
+            return 0;
+        }
+        if(str.contains(".") || str.contains(",")){
+            return Double.parseDouble(str);
+        }
+        return Integer.parseInt(str);
+    }
+    //Выодит целое или дробное число на экран корректно
+    private void updateTextField(double value){
+        if(value == (int)value){
+            resultTextView.setText(String.valueOf(((int) value)));
+            return;
+        }
+        resultTextView.setText(String.valueOf(value));
+    }
     //Очищает поле результата
-    private void onClickButtonClear(){
+    public void onClickButtonClear(View view){
         result ="";
         resultTextView.setText(result);
     }
     //Меняет знак числа
-    private void onClickButtonSign() {
-        result = resultTextView.getText().toString();
-
-        if(!result.startsWith("-")){
-            result = "-"+result;
-            resultTextView.setText(result);
+    public void onClickButtonSign(View view) {
+        resultD = -getValue();
+        updateTextField(resultD);
+    }
+    //Получает значение, конвертирует, вычисляет процент, выводит на экран
+    public void onPercentButtonClick(View view){
+        updateTextField(engine.getPercent(Math.abs(getValue())));
+    }
+    //Дописывает цифру с кнопки
+    public void onClickNumberButton(View view){
+        String value = resultTextView.getText().toString();
+        Button button = (Button) view;
+        if (value.equals("0")){
+            resultTextView.setText(button.getText());
             return;
         }
-        result = result.replace("-", "");
-        resultTextView.setText(result);
-        return;
+        value += button.getText();
+        resultTextView.setText(value);
     }
-
+    //обработка ввода точки
+    public void onClickDecimalPriceButton(View view){
+        String value = resultTextView.getText().toString();
+        if(value.equals("")){
+            value="0.";
+            resultTextView.setText(value);
+            return;
+        }
+        if (!value.contains(".")){
+            value +=".";
+            resultTextView.setText(value);
+        }
+    }
+    public void onClickZeroButton(View view){
+        String value=resultTextView.getText().toString();
+        if (value.equals("") || value.equals("0")){
+            resultTextView.setText("0");
+            return;
+        }
+        onClickNumberButton(buttonZero);
+    }
 }

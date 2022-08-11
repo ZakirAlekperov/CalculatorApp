@@ -5,10 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Objects;
 
 public class MainActivityLand extends AppCompatActivity implements View.OnClickListener {
 
@@ -85,7 +82,7 @@ public class MainActivityLand extends AppCompatActivity implements View.OnClickL
     TextView resultTextView;
     TextView radianStatus;
 
-    MainActivityEngine engine;
+    Engine engine;
 
     String result;
 
@@ -376,7 +373,7 @@ public class MainActivityLand extends AppCompatActivity implements View.OnClickL
 
     @Override
     protected void onDestroy() {
-        MainActivityEngine.result = resultTextView.getText().toString();
+        Engine.resultStr = resultTextView.getText().toString();
         super.onDestroy();
     }
 

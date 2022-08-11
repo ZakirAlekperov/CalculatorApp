@@ -1,8 +1,11 @@
 package com.zakiralekperov.calculator;
 
-public class MainActivityEngine {
+public class Engine {
+    static String currentValueStr;
+    static String resultStr;
 
-    static String result;
+    private double result;
+    private  double currentValue;
     //Вычислить процент от числа
     public String onClickButtonPercent(String value){
         double value_double =  convert(value);
@@ -11,7 +14,6 @@ public class MainActivityEngine {
     }
     //Деление
     public void onClickButtonDivision(){
-
     }
     //Умножение
     public void onClickButtonMultiplication(){
@@ -88,11 +90,8 @@ public class MainActivityEngine {
         return Double.parseDouble(str);
     }
 
-
-
-
-
-
-
-
+    //Возвращает процент от числа
+    public double getPercent(Double value) {
+        return value / 100;
+    }
 }
